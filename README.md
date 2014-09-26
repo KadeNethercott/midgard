@@ -11,5 +11,5 @@
 
 ### Description
 
-UI for a code review web app, implemented with angularjs, HTML5, and JQuery
+* UI for a code review web app, implemented with AngularJS, HTML5, and JQuery
 
