@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='harmonia' >
+	<head>
+		<meta charset='UTF-8'>
+		
+		<title>Code Review</title>
+
+		<link rel="stylesheet" href="./lib/bootstrap3/css/bootstrap.css" type='text/css'>
+		<link rel='stylesheet' href='./css/harmonia.css' type='text/css'/>
+		<link href="./lib/codeMirror/lib/codemirror.css" rel="stylesheet" type="txt/css">
+		<link href="./lib/codeMirror/theme/3024-night.css" rel="stylesheet" type="txt/css">
+		<link href="./lib/codeMirror/theme/mbo.css" rel="stylesheet" type="txt/css">
+	
+
+	</head>
+	
+<body ng-controller="indexCtrl">
+<!--
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+  	<a class="brand" href="#/" ng-click="buttonToggle('summary')">Midgard</a>
+  	<div class="container">
+			<ul class="nav">
+	      <li ><a href="#/summary" ng-click="buttonToggle('summary')">Home</a></li>
+	      <li><a href="#/summary" ng-click="buttonToggle('summary')">Issues</a></li>
+	      <li class="active"><a href="#/summary" ng-click="buttonToggle('summary')">Reviews</a></li>
+    	</ul>
+		</div>
+	</div>
+</div> -->
+
+<div class="container" >
+		
+		<div class="row">
+			<div class="col-xs-4">
+			</div>
+			<div class="col-xs-4">
+	
+			<ul class="nav nav-pills nav-justified" >
+			  <li ng-class="{active: buttonCreate}">
+			    <a href="#/create" ng-click="buttonToggle('create')">Create</a>
+			  </li>
+			  <li ng-class="{active: buttonSummary}">
+			  	<a href="#/summary" ng-click="buttonToggle('summary')">Summary</a>
+			  </l}i>
+			  <li ng-class="{active: buttonReviewer}">
+			  	<a href="#/reviewer/{{review.id}}/nav/{{review.fileId}}/comments" ng-click="buttonToggle('reviewer')">Review</a>
+			  </li>
+			</ul>
+					</div>
+			<div class="col-xs-4">
+			</div>
+		</div>
+
+	<!--
+	<ul class = "horizontal-slide inline" style='height:70px'>
+		<li>
+			<div class="text-right" >{{author.name}}</div>
+			<a class="thumbnail">
+				<img ng-src="{{author.img}}" > 
+			</a>
+			
+		</li>
+	</ul> -->
+
+	<div ui-view ></div>
+	
+</div>
+<div class="navbar navbar-inverse navbar-fixed-bottom nav-justified ">
+	<div class="navbar-header">
+			<div class='navbar-brand'>Harmonia</div>
+		</div>
+</div>
+<!--
+	<div class='container'>
+		name: 
+	<br/>
+	<input type='text' ng-model='name'/> {{name}}
+</div>
+	<div class='container' ng-controller='simpleCtrl'>
+		<ul class='unstyled'>
+			<li ng-repeat="person in people |filter:name | orderBy:'city'">{{person.name | uppercase}} - {{person.city}}</li>
+		</ul>
+	</div>
+	<script>
+		function simpleCtrl($scope){
+			$scope.people=[	{name:'john doe', city:'Austin'}, 
+											{name:'chris myres', city: 'Zena'}, 
+											{name: 'carol strype', city: 'Portland'}
+										];
+		}
+		-->
+	</script>
+	<script src="./lib/jquery/jquery.js"></script>
+	<script src="./lib/angular/angular.js"></script>
+
+	<script src="./lib/angular-ui/collapse.js"></script>
+	<script src="./lib/angular-ui/accordion.js"></script>
+	<script src="./lib/angular-ui/ui-bootstrap-tpls-0.10.0.min.js"></script>
+	
+	<script src="./lib/bootstrap3/js/bootstrap.js"></script>	
+	<script src="./lib/angular-ui/angular-ui-router.js"></script>
+
+	<script src="./lib/angular/angular-animate.js"></script>
+  <script src="./lib/angular/angular-resource.js"></script>
+  <script src="./lib/angular/angular-route.js"></script>
+  <script src="./lib/codeMirror/lib/codemirror.js"></script>
+  <script src="./lib/codeMirror/mode/javascript/javascript.js"></script>
+  <script src="./lib/codeMirror/ui-codemirror.js"></script>
+  <script src="./js/services.js"></script>
+  <script src="./js/controllers.js"></script>
+  <script src="./js/filters.js"></script>
+  <script src="./js/directives.js"></script>
+  <script src="./js/harmonia.js"></script>
+  <script type="text/javascript">
+    document.createElement('accordion');
+    document.createElement('accordion-group');
+    document.createElement('accordion-heading');
+</script>
+	</body>
+</html>
+

@@ -1,0 +1,83 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+body{
+	padding-top: 50px;
+	padding-bottom: 40px;
+
+}
+.lineColor, .lineColor, td {
+  border-color: #32C7F0 !important;
+  border-width: 2px !important;
+}
+
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+.blue{
+  color: #32C7F0;
+}
+.list-inline {
+  white-space:nowrap;
+}
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+    float:none;
+}
+.createPage{
+  margin-top: 20px;
+}
+.createBtn{
+  margin-top: 10px;
+}
+.moveUp{
+  padding:0;
+  margin-bottom: -20px;
+
+}
+.thumbnail{
+	margin-left: 10px;
+	width:30px;
+}
+
+.well{
+	background-color: #CECED0;
+	color: #2C2C2E ;
+}
+
+.reviewName{
+	text-align: right;
+	font-size: 20px;
+	font-weight: bold;
+	padding-right: 20%;
+	margin-bottom: -10px;
+}
+
+ul.horizontal-slide {
+	margin-top: -30px;
+
+    padding: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+ul.horizontal-slide li[class*="span"] {
+    display: inline-block;
+    float: none;
+}
+
+ul.horizontal-slide li[class*="span"]:first-child {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+ul.thumbnails li.span4:nth-child(3n + 4) {
+  margin: 0;
+}

@@ -1,0 +1,62 @@
+
+  <div class="row">
+      <div class="col-xs-4">
+        <ul class="nav nav-tabs">
+          <li ng-class="{active:isComments}">
+            <a ng-click="switchView('comments')" href="#/reviewer/{{reviewId}}/nav/{{fileId}}/comments">Comments</a>
+          </li>
+          <li ng-class="{active:isActions}">
+            <a ng-click="switchView('actions')" href="#/reviewer/{{reviewId}}/nav/{{fileId}}/actions">Actions</a>
+          </li>
+          <li ng-class="{active:isFocus}">
+            <a ng-click="switchView('focus')" href="#/reviewer/{{reviewId}}/nav/{{fileId}}/focus">Focus</a>
+          </li>
+        </ul>
+        <div ui-view></div>
+    
+    </div>
+  
+    <div class= "col-xs-8">
+      <ul class="nav nav-tabs">
+        <li ng-repeat="file in currentReview.files" ng-class="{active: isFiles[file.name]}">
+          <a ng-click="filesToggle(file.name, file.id)") href="#/reviewer/{{reviewId}}/nav/{{fileId}}/{{currentView}}">{{file.name}}</a>
+        </li>
+      </ul>
+        <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="code">
+        </ui-codemirror>
+    </div>
+  </div>
+
+
+    <!--  <div ng-switch on="renderPath">
+          <div ng-switch-when="comments">
+            
+              <button class="btn btn-info">Create</button>
+            <div  ng-repeat="comment in currentReview.comments">
+              <p class="well success" ng-show="comment.fileId == fileId"><i class="icon-share"></i>{{" " + comment.reviewer + ": " + comment.comment}}</p>
+            </div>
+            
+            </div>
+
+            <div ng-switch-when="actions">
+            
+              <button class="btn btn-info">Create</button>
+            <div class="success well ">
+              <p class="text-success">Action uno .... </p>
+            </div>
+            <div class="well">
+              <p>Action dos .... </p>
+            </div>
+            </div>
+
+            <div ng-switch-when="focus">
+            <ul class="nav nav-tabs">
+              <button class="btn btn-info">Create</button>
+            <div class="well">
+              <p>Focus uno .... </p>
+            </div>
+            <div class="well">
+              <p>Focus dos .... </p>
+            </div>
+            </div>
+      </div> -->

@@ -1,0 +1,168 @@
+<div class="create view" ng-controller="createCtrl">
+	<div class="container">
+
+    <div class="row">
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-10">
+
+  		<!--<button class="btn btn-danger">Create Review</button>-->
+      <div class="jumbotron createPage">
+        
+        <accordion close-others="true">
+          <accordion-group is-open="isopen">
+            <accordion-heading>
+             <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+             Basic Info
+            </accordion-heading>
+              <form name="addReviewForm" class="form-horizontal" role="form"> 
+             
+                 <div class='form-group'> 
+                  <label class="col-xs-2 control-label" >Review Name</label>
+                   <div class="col-xs-4">
+                    <input class="form-control" type="text" id="inputName" ng-model="$parent.info.newName" required>
+                </div>
+              </div>
+                
+                  <div class='form-group'> 
+                    <label class="col-xs-2 control-label" >Deadline</label>     
+                    <div class="col-xs-4">      
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="$parent.info.deadline"  is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    </div>
+              </div>
+            </form>
+          
+          </accordion-group>
+    
+          <accordion-group is-open="isOpenFiles">
+            <accordion-heading>
+              <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isOpenFiles, 'glyphicon-chevron-right': !isOpenFiles}"></i>
+               Files
+            </accordion-heading>
+              <p>Add Files ... </p>
+              <button class="btn btn-info" ng-click="addItem()">Select</button>
+              <div ng-repeat="file in newFiles">{{file}}</div>
+          </accordion-group>
+
+          <accordion-group is-open="isOpenReviewers">
+              <accordion-heading>
+                <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isOpenReviewers, 'glyphicon-chevron-right': !isOpenReviewers}"></i>
+                Reviewers
+              </accordion-heading>
+              <form name="addReviewersForm" class="form-horizontal" role="form"> 
+             
+                <div class='form-group'> 
+                  <label class="col-xs-2 control-label" >Reviewer Name</label>
+                  <div class="col-xs-4">
+                    <input class="form-control" type="text" id="inputName" ng-model="$parent.reviewers.newName">
+                  </div>
+                  <div class="col-xs-2">
+                    <button class="btn btn-info btn-block" ng-click="addReviewer()">Add</button>
+                  </div>  
+                </div>
+                <div class='form-group'>
+                  <label class="col-xs-2 control-label" >Reviewers</label>
+                  <div class="col-xs-4">
+                    <select multiple class="form-control">
+                        <option ng-repeat="reviewer in reviewers.list" ng-click="setReviewer($index)">
+                          {{reviewer.name}}
+                        </option>
+                    </select>
+                  </div>
+
+                  <div class="col-xs-2">
+                    <button class="btn btn-info btn-block" ng-click="removeReviewer()">Remove</button>
+                  </div>
+                </div>
+              </form>
+  
+          </accordion-group>
+          <accordion-group is-open="isOpenFocus">
+            <accordion-heading>
+              <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isOpenFocus, 'glyphicon-chevron-right': !isOpenFocus}"></i>
+              Focus List
+            </accordion-heading>
+            <form name="addFocusForm" class="form-horizontal" role="form"> 
+             
+              
+                <div class='form-group'> 
+                  <label class="col-xs-2 control-label" >Focus</label>
+                  <div class="col-xs-6">
+                    <textarea class="form-control" row="3" type="text" id="inputName" ng-model="$parent.focus.newFocus"></textarea>
+                  </div>
+                  
+                </div>
+                <div class='form-group'>
+                  <label class="col-xs-2 control-label" >Assign</label>
+                  <div class="col-xs-6">
+                    <select multiple class="form-control">
+                      <option ng-repeat="reviewer in reviewers.list" ng-click="reviewerSelected($index)">
+                        {{reviewer.name}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-xs-2">
+                    <button class="btn btn-info btn-block" ng-click="addFocus()">Add</button>
+                  </div>  
+                </div>
+              
+              <div class='form-group'>
+                <label class="col-xs-2 control-label" >List</label>
+                <div class="col-xs-6">
+                <select multiple class="form-control">
+                  <option ng-repeat="focus in focus.list" ng-click="focusSelected($index)">
+                    {{focus.reviewer + ' - ' + focus.focus}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-xs-2">
+                    <button class="btn btn-info btn-block" ng-click="removeFocus()">Remove</button>
+                  </div> 
+              </div>
+            
+           </form>
+          </accordion-group>
+        </accordion>
+        <div class="row">
+           <div class="col-xs-1">
+           </div>
+          <div class="col-xs-3">
+            <a class="btn btn-info btn-block" href="#/summary" ng-click="$parent.buttonToggle('summary'); submitReview()">Submit</a>
+          </div>
+          <div class="col-xs-1">
+           </div>
+          <div class="col-xs-3">
+            <strong>Review Name: </strong>
+            <strong><span class="blue">{{info.newName}}</span></strong>
+          </div>
+          <div class="col-xs-3">
+            
+             <strong>Deadline: </strong>
+             <strong><span class="blue">{{info.deadline | date: format}}</span></strong>
+          </div>
+        </div>
+        <div class="row">
+           <div class="col-xs-1">
+           </div>
+          <div class="col-xs-3">
+          </div>
+          <div class="col-xs-1">
+           </div>
+          <div class="col-xs-3">
+            <strong>Reviewers: </strong>
+           <strong><span class="blue">{{reviewers.list.length}}</span></strong>
+          </div>
+          <div class="col-xs-3">
+            
+             <strong>Foci: </strong>
+             <strong><span class="blue">{{focus.list.length}}</span></strong>
+          </div>
+        </div>
+        </div>
+        <div class="col-xs-1">
+      </div>
+      </div>
+    </div>
+	</div>
+</div>
+

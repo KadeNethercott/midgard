@@ -1,0 +1,41 @@
+
+<div ng-cloak>
+  <div class="container">
+    <p class="input-group">
+      <button class="btn btn-info createBtn" ng-click="createFocus()">Create</button>
+    </p>
+    <div ng-show="isCreate">
+      <form name="addFocusForm" class="form-horizontal"role="form"> 
+        <div class='form-group'> 
+          <div class="col-xs-4">
+            <textarea class="form-control" row="3" type="text" id="inputFocus" ng-model="newFocus" placeholder="Enter Focus" required></textarea>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <div class="col-xs-2">
+            <input class="form-control" type="text" id="inputName" ng-model="authorName" placeholder="Enter Name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-2">
+            <input class="form-control"  type="number"  id="inputStart" ng-model="startline" placeholder="Start Line" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-2"> 
+            <input class="form-control" type="number"  id="inputEnd" ng-model="endline" placeholder="End Line" required>
+          </div>
+        </div>
+      <button class="btn btn-danger" ng-disabled="!addFocusForm.$valid" ng-click="submitFocus()">Submit</button>
+      </form >
+    </div>
+  </div>
+  <div ng-repeat="focus in currentReview.foci">
+    <p class="well success" ng-show="focus.fileId == fileId">
+      <input type="checkbox" ng-model='focus.completed'> 
+      {{" " + focus.reviewer + ": " + focus.focus }}
+    </p>
+  </div>
+
+</div>

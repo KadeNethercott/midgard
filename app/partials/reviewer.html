@@ -1,0 +1,21 @@
+<div ng-cloak class="container" >
+	<div class="row">
+		<div class="col-xs-4 moveUp" >
+			
+				<ul ng-cloak class = "list-inline">
+					<li ng-repeat="peep in peeps" >
+						<div class="text-right" >{{peep.name}}</div>
+						<a class="thumbnail">
+							<img ng-src="{{peep.img}}" > 
+						</a>
+						
+					</li>
+				</ul>
+		
+			</div>
+		<div class="col-xs-8 moveUp">
+      <div class="reviewName">{{reviewName}}</div>
+    </div>
+  </div>
+	<div ui-view></div>
+</div>

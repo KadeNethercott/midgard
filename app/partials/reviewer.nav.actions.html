@@ -1,0 +1,42 @@
+
+<div ng-cloak>
+  <div class="container">
+    <p class="input-group">
+      <button class="btn btn-info createBtn" ng-click="createAction()">Create</button>
+   </p>
+  <div ng-show="isCreate">
+ 
+    <form name="addActionForm" class="form-horizontal" role="form"> 
+      <div class='form-group'> 
+        <div class="col-xs-4">
+          <textarea class="form-control" row="3" type="text" id="inputAction" ng-model="newAction" placeholder="Enter Action" required></textarea>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="col-xs-2">
+          <input class="form-control" type="text" id="inputName" ng-model="authorName" placeholder="Enter Name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-2">
+          <input class="form-control"  type="number"  id="inputStart" ng-model="startline" placeholder="Start Line" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-2"> 
+          <input class="form-control" type="number"  id="inputEnd" ng-model="endline" placeholder="End Line" required>
+        </div>
+      </div>
+    <button class="btn btn-danger" ng-disabled="!addActionForm.$valid" ng-click="submitAction()">Submit</button>
+    </form >
+
+  </div>
+</div>
+  <div ng-repeat="action in currentReview.actions">
+    <p class="well success" ng-show="action.fileId == fileId">
+      <input type="checkbox" ng-model='action.completed'> 
+      {{" " + action.reviewer + ": " + action.action }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="create view">
+	<div class="container">
+		<div class="row">
+      <div class="col-xs-1">
+      </div>
+      <div class="col-xs-10">
+
+  		<!--<button class="btn btn-danger">Create Review</button>-->
+      <div class="jumbotron createPage">
+			<accordion close-others="true">
+          <accordion-group is-open="isopen">
+            <accordion-heading>
+             <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+             Author
+            </accordion-heading>
+				
+					<div class="col-xs-3">
+					<select class="form-control" ng-options="o.option for o in author.options" ng-model="author.order">
+					</select>
+				</div>
+				<table class="table table-hover  lineColor">
+		  		<thead>
+		   			 <tr>
+		   			 	<th></th>
+		     			<th>Name</th>
+		      		<th>Status</th>
+		      		<th>Deadline</th>
+		      		<th>Progress</th>
+		    		</tr>
+		  		</thead>
+		  		<tbody>
+		    		<tr class="active" ng-repeat = "review in author.reviews | orderBy:author.order.option"  >
+		    			<td><i class="glyphicon glyphicon-edit"></i></td>
+		      		<td><a class="btn btn-info btn-block" ng-click="$parent.buttonToggle('reviewer')"href="#/reviewer/{{review.id}}/nav/0/comments">{{review.name}}</a></td>
+		      		<td>{{review.status}}</td>
+		      		<td>{{review.deadline | date}}</td>
+		      		<td>
+
+									<div class="btn-group">
+								    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								        50% <span class="caret"></span>
+								    </button>
+								    <ul class="dropdown-menu list-inline" role="menu">
+								        <li ng-repeat="reviewer in review.reviewers">{{reviewer.name}}<span ng-class="{'glyphicon glyphicon-ok green': reviewer.done, 'glyphicon glyphicon-remove red': !reviewer.done}"></span></li>
+								        <!--<li>John<span class="glyphicon glyphicon-remove red"></span></li>     -->     
+								    </ul>
+									</div>
+							</td>
+		    		</tr>
+		  		</tbody>
+				</table>
+				
+				</accordion-group>
+	
+          <accordion-group is-open="isOpenReviewer">
+            <accordion-heading>
+             <i class="glyphicon" ng-class="{'glyphicon-chevron-down': isOpenReviewer, 'glyphicon-chevron-right': !isOpenReviewer}"></i>
+             Reviewer
+            </accordion-heading>
+
+			
+					<div class="col-xs-3">
+						<select class="form-control" ng-options="o.option for o in reviewer.options" ng-model="reviewer.order">
+					</select>
+					</div>
+					<table class="table table-hover lineColor">
+			  		<thead>
+			   			 <tr>
+			     			<th>Name</th>
+			      		<th>Status</th>
+			      		<th>Deadline</th>
+			      		<th>Author</th>
+			      		<th>Progress</th>
+			    		</tr>
+			  		</thead>
+			  		<tbody>
+			    		<tr class="active" ng-repeat="review in reviewer.reviews | orderBy: reviewer.order.option">
+			      		<td><a class="btn btn-info btn-block" ng-click="$parent.buttonToggle('reviewer')"href="#/reviewer/{{review.id}}/nav/0/comments">{{review.name}}</a></td>
+			      		<td>{{review.status}}</td>
+			      		<td>{{review.deadline | date : 'shortDate'}}</td>
+			      		<td>{{review.author.name}}</td>
+			      		<td>
+
+									<div class="btn-group">
+								    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								        50% <span class="caret"></span>
+								    </button>
+								    <ul class="dropdown-menu list-inline" role="menu">
+								        <li ng-repeat="reviewer in review.reviewers">{{reviewer.name}}<span ng-class="{'glyphicon glyphicon-ok green': reviewer.done, 'glyphicon glyphicon-remove red': !reviewer.done}"></span></li>
+								        <!--<li>John<span class="glyphicon glyphicon-remove red"></span></li>     -->     
+								    </ul>
+									</div>
+							</td>
+			    		</tr>
+			  		</tbody>
+					</table>
+			</accordion-group>
+		</accordion>
+		</div>
+	</div>
+			<div class="col-xs-1">
+      </div>
+      </div>
+    </div>
+	</div>
