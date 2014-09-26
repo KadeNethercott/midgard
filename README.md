@@ -4,9 +4,9 @@
 
 ### Running the app 
 
-* install node.js and run npm start
+* install node.js, npm install, npm start to launch web server
 
-* Then navigate your browser to `http://localhost:8000/app/code-review.html` 
+* Go to http://localhost:8000/app/code-review.html` 
 
 
 ### Description
